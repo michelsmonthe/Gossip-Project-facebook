@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<br/>
+<br/>
+<div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+  <div class="container">
+
+  	<!-- Ajout de la fonctionnalité qui permet d'ajouter une alerte au user-->
+	<% if flash[:alert] != nil %>
+	  <div class='alert alert-success mt-4'>
+	    <%= flash[:alert] %>
+	  </div>
+	  <% end %>
+
+    <h1 class="display-5 text-center" style="color:#37444a" >BIENVENUE à toi!!!!</h1>
+    <p class="text-center">Tu trouveras ci-dessous la liste de tous les gossips que nous avons en base à ce jour<br><br>
+    
+   Tu as également la possiblité de créer un nouveau gossip<br>
+   <!-- Permet d'ajouter la nouvelle fonctionnalité liée à la création de nouveau gossip-->
+    <a href=<%= new_gossip_path %>>
+      <button class='btn btn-primary '>Nouveau gossip</button>
+    </a>
+    </p>
+  </div>
+  </div>
+
+</div>
+
+<% @gossips.each.with_index(1) do |gossip, index| %>
+  <div class="card-deck" style="margin-left: 15px; margin-right: 15px">
+  <div class="card" style="width: 18rem; background-color:#cae3ed">
+    <div class="card-body">
+      <h5 class="card-title"><%= index %> - "<%= gossip.title %>"</h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= gossip.user.first_name %></h6>
+      <a href=<%= gossip_path(gossip.id) %>><button class='btn btn-primary'>Plus de détails:</button></a>
+    </div>
+    </div>
+  </div>
+<br/>
+<% end %>
+</html>
+
+

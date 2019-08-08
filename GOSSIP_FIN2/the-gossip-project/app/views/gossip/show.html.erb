@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<br/>
+<br/>
+<div class="jumbotron jumbotron-fluid" style="background-color:#cae3ed">
+  <div class="container">
+    <h1 class="display-5 text-center" style="color:#37444a" >PAGE POTIN</h1>
+    <p class="text-center"> Voici la page du potin n°<%= params['id']%><br><br>
+    Intitulé :<%= @gossip.title%><br><br>
+    Auteur :<%= @gossip.user.first_name%><br><br>
+    Ville de l'auteur:<%= @gossip.user.city.name%><br><br>
+    Le contenu du potin est :<%= @gossip.content%><br><br>
+    <a href=<%= gossip_index_path %>><button class='btn btn-primary'>Retour</button></a>
+    <a href=<%= edit_gossip_path(@gossip.id) %>><button class='btn btn-secondary'>modifier</button></a>
+    <a href=<%= user_path(@gossip.user.id) %>><button class='btn btn-success'>info sur l'auteur</button></a>
+    </p>
+  </div>
+</div>
+
+</html>
+
